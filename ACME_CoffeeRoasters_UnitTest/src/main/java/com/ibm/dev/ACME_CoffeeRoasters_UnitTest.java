@@ -43,7 +43,7 @@ public class ACME_CoffeeRoasters_UnitTest {
 		
 			// Define the SpyObjectReference
 			SpyObjectReference nodeReference = new SpyObjectReference().application("ACME_CoffeeRoasters_Application")
-					.messageFlow("ACME_CoffeeRoasters_Flow").node("Transform");
+					.messageFlow("ACME_CoffeeRoasters_Flow");
 
 			// Initialise a NodeSpy
 			NodeSpy nodeSpy = new NodeSpy(nodeReference);

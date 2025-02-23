@@ -10,7 +10,7 @@ runtests () {
     EC=$?
     if [[ $EC != 0 ]]; then
         echo "ACME_CoffeeRoasters_UnitTest failed with exit code $EC"
-        # exit $EC
+        exit $EC
     fi
     # rm -fr /tmp/work-dir/run && cd /tmp/coffee/ACME_CoffeeRoasters_ComponentTest && /tmp/coffee/gradle-8.13-milestone-3/bin/gradle
     # cp -vr /tmp/coffee/ACME_CoffeeRoasters_ComponentTest /tmp/work-dir/run
