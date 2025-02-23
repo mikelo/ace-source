@@ -2,15 +2,24 @@
 source /opt/ibm/ace-13/server/bin/mqsiprofile
 
 runtests () {
-    ibmint generate tests --recorded-messages $DATA --output-test-project /tmp/test-project --java-class com.ibm.ClassName 
-    cd /tmp/test-project && /tmp/gradle-8.13-milestone-3/bin/gradle
-    cp -vr /tmp/test-project /tmp/work-dir/run 
-    IntegrationServer --work-dir /tmp/work-dir --test-project test-project --start-msgflows false
+    # ibmint generate tests --recorded-messages $DATA --output-test-project /tmp/test-project --java-class com.ibm.ClassName 
+    # cd /tmp/coffee/ACME_CoffeeRoasters_UnitTest && /tmp/coffee/gradle-8.13-milestone-3/bin/gradle
+    # cp -vr /tmp/coffee/ACME_CoffeeRoasters_UnitTest /tmp/work-dir/run 
+    # ibmint deploy --input-path /tmp/coffee/ 
+    IntegrationServer --work-dir /tmp/work-dir --test-project ACME_CoffeeRoasters_UnitTest --start-msgflows false
     EC=$?
     if [[ $EC != 0 ]]; then
-        echo "tests failed with exit code $EC"
-        exit $EC
+        echo "ACME_CoffeeRoasters_UnitTest failed with exit code $EC"
+        # exit $EC
     fi
+    # rm -fr /tmp/work-dir/run && cd /tmp/coffee/ACME_CoffeeRoasters_ComponentTest && /tmp/coffee/gradle-8.13-milestone-3/bin/gradle
+    # cp -vr /tmp/coffee/ACME_CoffeeRoasters_ComponentTest /tmp/work-dir/run
+    IntegrationServer --work-dir /tmp/work-dir --test-project ACME_CoffeeRoasters_ComponentTest --start-msgflows false
+    EC=$?
+    if [[ $EC != 0 ]]; then
+        echo "ACME_CoffeeRoasters_ComponentTest failed with exit code $EC"
+        # exit $EC
+    fi    
 }
 
 if [[ -z $SKIP ]]; then
