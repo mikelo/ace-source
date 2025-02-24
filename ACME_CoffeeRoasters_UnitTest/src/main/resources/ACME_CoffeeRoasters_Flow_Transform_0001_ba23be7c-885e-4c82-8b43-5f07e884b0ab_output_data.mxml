@@ -7,24 +7,24 @@
       <timestamp xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="TIMESTAMP">2023-05-10 08:37:38.653999</timestamp>
       <source>
          <name xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Compute</name>
-         <identifier xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ACME_CoffeeRoasters_ApplicationFlow#FCMComposite_1_1</identifier>
+         <identifier xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">CoolBeansInventoryFlow#FCMComposite_1_1</identifier>
          <type xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ComIbmComputeNode</type>
          <terminal xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">out</terminal>
          <nodePath>
-            <application xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ACME_CoffeeRoasters_Application</application>
-            <messageFlow xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ACME_CoffeeRoasters_ApplicationFlow</messageFlow>
+            <application xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">CoolBeansInventory</application>
+            <messageFlow xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">CoolBeansInventoryFlow</messageFlow>
             <node xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Compute</node>
          </nodePath>
          <inputNode xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="BOOLEAN">FALSE</inputNode>
       </source>
       <target>
          <name xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Callable Reply</name>
-         <identifier xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ACME_CoffeeRoasters_ApplicationFlow#FCMComposite_1_5</identifier>
+         <identifier xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">CoolBeansInventoryFlow#FCMComposite_1_5</identifier>
          <type xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ComIbmCallableFlowReplyNode</type>
          <terminal xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">in</terminal>
          <nodePath>
-            <application xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ACME_CoffeeRoasters_Application</application>
-            <messageFlow xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">ACME_CoffeeRoasters_ApplicationFlow</messageFlow>
+            <application xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">CoolBeansInventory</application>
+            <messageFlow xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">CoolBeansInventoryFlow</messageFlow>
             <node xmlns:iib="http://com.ibm.iib/lt/1.0" iib:valueType="CHARACTER">Callable Reply</node>
          </nodePath>
       </target>
@@ -74,8 +74,8 @@
             <Results iib:elementType="0x01001000"/>
             <Datetime iib:tz="Europe/London" iib:valueType="TIMESTAMP">2023-05-10 09:37:38.656085</Datetime>
             <Hostname iib:valueType="CHARACTER">IBM-PF3VSJ5T</Hostname>
-            <Application iib:valueType="CHARACTER">ACME_CoffeeRoasters_Application</Application>
-            <Flow iib:valueType="CHARACTER">ACME_CoffeeRoasters_ApplicationFlow</Flow>
+            <Application iib:valueType="CHARACTER">CoolBeansInventory</Application>
+            <Flow iib:valueType="CHARACTER">CoolBeansInventoryFlow</Flow>
             <SoftwareVersion iib:valueType="CHARACTER">12070</SoftwareVersion>
          </Data>
       </JSON>
