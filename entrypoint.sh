@@ -6,6 +6,7 @@ runtests () {
     # cd /tmp/coffee/ACME_CoffeeRoasters_UnitTest && /tmp/coffee/gradle-8.13-milestone-3/bin/gradle
     # cp -vr /tmp/coffee/ACME_CoffeeRoasters_UnitTest /tmp/work-dir/run 
     # ibmint deploy --input-path /tmp/coffee/ 
+    ibmint create node Transform && ibmint start node Transform
     IntegrationServer --work-dir /tmp/work-dir --test-project ACME_CoffeeRoasters_UnitTest --start-msgflows false
     EC=$?
     if [[ $EC != 0 ]]; then
@@ -19,7 +20,8 @@ runtests () {
     if [[ $EC != 0 ]]; then
         echo "ACME_CoffeeRoasters_ComponentTest failed with exit code $EC"
         # exit $EC
-    fi    
+    fi
+    ibmint stop node Transform
 }
 
 if [[ -z $SKIP ]]; then
