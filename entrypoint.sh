@@ -2,11 +2,11 @@
 source /opt/ibm/ace-13/server/bin/mqsiprofile
 
 runtests () {
-    rm -fr /tmp/work-dir/run /tmp/test-project 2>/dev/null
+    rm -fr /tmp/test-project 2>/dev/null
     ibmint generate tests --recorded-messages /tmp/$1/src/main/resources --output-test-project test-project --java-class com.ibm.dev.$1 
     cd /tmp/test-project && /tmp/gradle-8.13-milestone-3/bin/gradle
     cp -vr /tmp/test-project /tmp/work-dir/run 
-    IntegrationServer --work-dir /tmp/work-dir --test-project test-project --start-msgflows false --default-application-name test-project
+    IntegrationServer --work-dir /tmp/work-dir --test-project test-project --start-msgflows false --default-application-name CoolBeansInventory
     EC=$?
     if [[ $EC != 0 ]]; then
         echo "$1 failed with exit code $EC"
