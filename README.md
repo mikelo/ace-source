@@ -2,9 +2,9 @@
 
 ## Overview
 
-This project leverages Docker to build and deploy an IBM App Connect Enterprise (ACE) application sourced from a GitHub repository. The Dockerfile provided outlines the steps to create a Docker image that packages and deploys an ACE application.
+This project leverages Docker to build and deploy an IBM App Connect Enterprise (ACE) application sourced from a GitHub repository. The Containerfile provided outlines the steps to create a Docker image that packages and deploys an ACE application.
 
-## Dockerfile Breakdown
+## Containerfile Breakdown
 
 ### Base Images
 
@@ -50,24 +50,24 @@ This project leverages Docker to build and deploy an IBM App Connect Enterprise 
 
 2. Build the Docker image:
     ```sh
-    docker build -t ace-app .
+    podman build -t ace-app .
     ```
 
 ### Running the Docker Container
 
 1. Start a container from the image:
     ```sh
-    docker run -d -p 7600:7600 -p 7800:7800 ace-app
+    podman run -d -p 7600:7600 -p 7800:7800 ace-app
     ```
 
 ### Notes
 
 - The `entrypoint.sh` script is expected to be part of the project repository and should handle the startup logic for the ACE application.
-- Modify the `Dockerfile` and `entrypoint.sh` as needed to fit the specific requirements and configurations of your ACE application.
+- Modify the `Containerfile` and `entrypoint.sh` as needed to fit the specific requirements and configurations of your ACE application.
 
 ## License
 
-By using this Dockerfile and associated scripts, you agree to the terms and conditions of the IBM license agreement.
+By using this Containerfile and associated scripts, you agree to the terms and conditions of the IBM license agreement.
 
 ## Contributing
 
@@ -75,7 +75,7 @@ Feel free to submit issues and enhancement requests. Contributions are welcome!
 
 ## Author
 
-- Mike Lo (https://github.com/mikelo)
+- Michele (https://github.com/mikelo)
 
 For more information, please refer to the official IBM ACE documentation.
 
