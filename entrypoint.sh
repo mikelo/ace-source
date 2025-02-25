@@ -6,7 +6,7 @@ runtests () {
     EC=$?
     if [[ $EC != 0 ]]; then
         echo "$1 failed with exit code $EC"
-        # exit $EC
+        exit $EC
     fi    
 }
 
