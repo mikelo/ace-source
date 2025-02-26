@@ -75,7 +75,7 @@ Feel free to submit issues and enhancement requests. Contributions are welcome!
 
 ## Author
 
-- Michele (https://github.com/mikelo)
+- Michele (https://github.com/mikelo) and Benedetta (https://github.com/benedettapiano)
 
 For more information, please refer to the official IBM ACE documentation.
 
