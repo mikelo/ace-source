@@ -37,7 +37,7 @@ This project leverages Docker to build and deploy an IBM App Connect Enterprise 
 
 ### Prerequisites
 
-- Docker installed on your local machine.
+- Podman installed on your local machine.
 - Internet access to pull the Docker base images and clone the GitHub repository.
 
 ### Building the Docker Image
