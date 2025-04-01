@@ -1,0 +1,131 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-5.4.0
+
+# NOTE: If you generated this yaml from an unprivileged and rootless podman container on an SELinux
+# enabled system, check the podman generate kube man page for steps to follow to ensure that your pod/container
+# has the right permissions to access the volumes added.
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coffee
+spec:
+  selector:
+    matchLabels:
+      app: coffee
+  template:
+    metadata:
+      labels:
+        app: coffee
+    spec:
+      containers:
+      - name: coffee
+        image: image-registry.openshift-image-registry.svc:5000/ace/coffee
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 7600
+        - containerPort: 7800
+        env:
+        - name: SKIP
+          value: "TRUE"
+        - name: TERM
+          value: xterm
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+spec:
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      containers:
+      - image: quay.io/jaegertracing/all-in-one:1.57
+        name: jaeger
+        ports:
+        - containerPort: 16686
+        - containerPort: 4317
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"        
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mq
+spec:
+  selector:
+    matchLabels:
+      app: mq
+  template:
+    metadata:
+      labels:
+        app: mq
+    spec:
+      containers:
+      - env:
+        - name: MQ_ADMIN_PASSWORD
+          value: admin
+        - name: TERM
+          value: xterm
+        - name: LICENSE
+          value: accept
+        image: icr.io/ibm-messaging/mq:latest
+        name: mq
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "300m"        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jaeger
+spec:
+  selector:
+    app: jaeger
+  ports:
+  - port: 16686
+    targetPort: 16686
+    name: console
+  - port: 4317
+    targetPort: 4317
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: coffee
+spec:
+  selector:
+    app: coffee
+  ports:
+  - port: 7600
+    targetPort: 7600
+    name: dashboard
+  - port: 7800
+    targetPort: 7800
+    name: other
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mq
+spec:
+  selector:
+    app: mq
+  ports:
+  - port: 9443
+    targetPort: 9443
+    name: http

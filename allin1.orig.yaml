@@ -1,0 +1,75 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-5.4.0
+
+# NOTE: If you generated this yaml from an unprivileged and rootless podman container on an SELinux
+# enabled system, check the podman generate kube man page for steps to follow to ensure that your pod/container
+# has the right permissions to access the volumes added.
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2025-03-05T15:31:19Z"
+  labels:
+    app: coffee-pod
+  name: coffee-pod
+spec:
+  containers:
+  - env:
+    - name: SKIP
+      value: "TRUE"
+    - name: TERM
+      value: xterm
+    image: localhost/coffee:latest
+    name: coffee
+    ports:
+    - containerPort: 7600
+      hostPort: 7600
+    - containerPort: 7800
+      hostPort: 7800
+    - containerPort: 16686
+      hostPort: 16686
+    securityContext:
+      runAsNonRoot: true
+    stdin: true
+    tty: true
+  - image: quay.io/jaegertracing/all-in-one:1.57
+    name: jaeger
+    ports:
+    - containerPort: 7600
+      hostPort: 7600
+    - containerPort: 7800
+      hostPort: 7800
+    - containerPort: 16686
+      hostPort: 16686
+    securityContext:
+      runAsNonRoot: true
+    volumeMounts:
+    - mountPath: /tmp
+      name: d7ec03d0a09c2c55972cc935788c365ca3e620980ecfd70cfb138d0433d81133-pvc
+  - env:
+    - name: MQ_ADMIN_PASSWORD
+      value: admin
+    - name: TERM
+      value: xterm
+    - name: LICENSE
+      value: accept
+    image: icr.io/ibm-messaging/mq:latest
+    name: gallantsolomon
+    ports:
+    - containerPort: 7600
+      hostPort: 7600
+    - containerPort: 7800
+      hostPort: 7800
+    - containerPort: 16686
+      hostPort: 16686
+    securityContext:
+      runAsNonRoot: true
+    stdin: true
+    tty: true
+  volumes:
+  - name: d7ec03d0a09c2c55972cc935788c365ca3e620980ecfd70cfb138d0433d81133-pvc
+    persistentVolumeClaim:
+      claimName: d7ec03d0a09c2c55972cc935788c365ca3e620980ecfd70cfb138d0433d81133
+
