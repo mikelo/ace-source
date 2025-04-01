@@ -103,7 +103,8 @@ DECLARE Initialised SHARED BOOLEAN FALSE;
 	END;
 
 
-CREATE FUNCTION  GetHostname()
+CREATE FUNCTION GetHostname()
  RETURNS CHAR
  LANGUAGE JAVA 
  EXTERNAL NAME "com.ibm.dev.MyClass.myHostnameMethod";
+

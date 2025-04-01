@@ -22,6 +22,7 @@ function prettify() {
 </script></body>
 </html>';
 			SET OutputRoot.BLOB.BLOB = CAST(htmlresponse AS BLOB CCSID 1208);
+			--SET OutputRoot.XMLNSC.TestMessage = 'Hello, Activity Log!!';
 		RETURN TRUE;
 	END;
 
@@ -37,5 +38,5 @@ function prettify() {
 
 	CREATE PROCEDURE CopyEntireMessage() BEGIN
 		SET OutputRoot = InputRoot;
-	END;
+		END;
 END MODULE;
