@@ -3,6 +3,8 @@
 	<name>ACME_CoffeeRoasters_Application</name>
 	<comment></comment>
 	<projects>
+		<project>ACMECoffeeRoastersJava</project>
+		<project>ACME_CoffeeRoasters_Java</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

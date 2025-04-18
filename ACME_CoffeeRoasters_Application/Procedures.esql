@@ -85,6 +85,8 @@ DECLARE Initialised SHARED BOOLEAN FALSE;
 		DECLARE datetimepattern CHAR 'yyyyMMdd HH:mm:ss ZZZ';
 		SET Environment.Variables.Datetime = CAST(CURRENT_TIMESTAMP AS CHAR FORMAT datetimepattern);
 		SET Environment.Variables.Hostname = GetHostname();
+		SET Environment.Variables.Properties = GetSystemProperties();
+		
 		SET Environment.Variables.Application = ApplicationLabel;
 		SET Environment.Variables.Flow = MessageFlowLabel;
 		SET Environment.Variables.SoftwareVersion = BrokerVersion;		
@@ -102,9 +104,14 @@ DECLARE Initialised SHARED BOOLEAN FALSE;
 		SET Environment.Variables.MessageDetail = Message;
 	END;
 
-
 CREATE FUNCTION GetHostname()
  RETURNS CHAR
  LANGUAGE JAVA 
  EXTERNAL NAME "com.ibm.dev.MyClass.myHostnameMethod";
+ 
+CREATE FUNCTION GetSystemProperties()
+ RETURNS CHAR
+ LANGUAGE JAVA
+ EXTERNAL NAME "com.ibm.dev.MyClass.systemProperties";
+  	
 

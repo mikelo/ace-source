@@ -22,7 +22,7 @@
       <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="634,24" computeExpression="esql://routine/#LocalTest_Compute1.Main">
         <translation xmi:type="utility:ConstantString" string="Compute1"/>
       </nodes>
-      <nodes xmi:type="ComIbmLog.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="633,95" logLevel="Info" logMessage="Message: {{$lookup($lookup($lookup($mappingInput_InputRoot, 'JSON'), 'Data'), 'Message')}}">
+      <nodes xmi:type="ComIbmLog.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="633,95" logLevel="Info" logMessage="Message: {{$lookup($lookup($lookup($mappingInput_InputRoot, 'JSON'), 'Data'), 'Properties')}}">
         <translation xmi:type="utility:ConstantString" string="Log"/>
         <mappingInput inputName="InputRoot" inputLocation="$InputRoot" schemaLocation="" schemaRoot=""/>
         <mappingInput inputName="InputLocalEnvironment" inputLocation="$InputLocalEnvironment" schemaLocation="" schemaRoot=""/>

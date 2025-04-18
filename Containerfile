@@ -1,6 +1,8 @@
+# BRANCH=$(git rev-parse --abbrev-ref HEAD)
+ARG BRANCH=main
 FROM docker.io/alpine/git as git
 WORKDIR /tmp
-RUN git clone https://github.com/mikelo/ace-source
+RUN git clone -b $BRANCH --single-branch https://github.com/mikelo/ace-source
 FROM cp.icr.io/cp/appc/ace:13.0.2.0-r1 AS ace
 # USER aceuser
 ENV LICENSE=accept
