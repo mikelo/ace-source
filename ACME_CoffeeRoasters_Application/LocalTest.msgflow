@@ -7,7 +7,7 @@
     <colorGraphic32 xmi:type="utility:GIFFileGraphic" resourceName="platform:/plugin/ACME_CoffeeRoasters_Application/icons/full/obj30/LocalTest.gif"/>
     <version xmi:type="utility:ConstantString" string="2.0"/>
     <composition>
-      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="44,168" URLSpecifier="/acme*" parseQueryString="true" messageDomainProperty="JSON">
+      <nodes xmi:type="ComIbmWSInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="44,168" URLSpecifier="/acme*" parseQueryString="true" messageDomainProperty="JSON" validateTiming="immediate" validateMaster="contentAndValue" validateFailureAction="exceptionList">
         <translation xmi:type="utility:ConstantString" string="HTTP Input"/>
       </nodes>
       <nodes xmi:type="ComIbmWSReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_2" location="940,138">
@@ -23,9 +23,16 @@
         <translation xmi:type="utility:ConstantString" string="Compute1"/>
       </nodes>
       <nodes xmi:type="ComIbmLog.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="633,95" logLevel="Info" logMessage="Message: {{$lookup($lookup($lookup($mappingInput_InputRoot, 'JSON'), 'Data'), 'Properties')}}">
-        <translation xmi:type="utility:ConstantString" string="Log"/>
+        <translation xmi:type="utility:ConstantString" string="Log Properties"/>
         <mappingInput inputName="InputRoot" inputLocation="$InputRoot" schemaLocation="" schemaRoot=""/>
         <mappingInput inputName="InputLocalEnvironment" inputLocation="$InputLocalEnvironment" schemaLocation="" schemaRoot=""/>
+        <mappingInput inputName="ExceptionList" inputLocation="$ExceptionList" messageDomain="" schemaLocation="" schemaRoot=""/>
+      </nodes>
+      <nodes xmi:type="ComIbmLog.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_8" location="530,288" logLevel="Info" logMessage="{{$mappingInput_ExceptionList}}">
+        <translation xmi:type="utility:ConstantString" string="Exception"/>
+        <mappingInput inputName="InputRoot" inputLocation="$InputRoot" schemaLocation="" schemaRoot=""/>
+        <mappingInput inputName="InputLocalEnvironment" inputLocation="$InputLocalEnvironment" schemaLocation="" schemaRoot=""/>
+        <mappingInput inputName="ExceptionList" inputLocation="$ExceptionList" messageDomain="" schemaLocation="" schemaRoot=""/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out1" targetTerminalName="InTerminal.in"/>
@@ -34,6 +41,8 @@
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_8" targetNode="FCMComposite_1_6" sourceNode="FCMComposite_1_3" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_11" targetNode="FCMComposite_1_2" sourceNode="FCMComposite_1_8" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_18" targetNode="FCMComposite_1_8" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

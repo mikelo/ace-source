@@ -2,39 +2,53 @@
 <mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" xmlns:map="default" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0">
     <inlinedXMLSchema><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-       
+         
     
-  <xsd:element name="Properties" type="xsd:string"/>
+          
+  <xsd:element name="Address" type="xsd:string"/>
       
+  <xsd:element name="Properties" type="xsd:string"/>
+        
+  
   <xsd:element name="MessageDetail" type="xsd:string"/>
+      
     
-    
+  
   <xsd:element name="Message" nillable="true" type="xsd:string"/>
-       
+         
     
+  
   <xsd:element name="SoftwareVersion" type="xsd:string"/>
-       
+         
     
+  
   <xsd:element name="Flow" type="xsd:string"/>
-       
+         
     
+  
   <xsd:element name="Application" type="xsd:string"/>
-       
+         
     
+  
   <xsd:element name="Hostname" type="xsd:string"/>
-       
+         
     
+  
   <xsd:element name="Datetime" type="xsd:string"/>
-       
+         
     
+  
   <xsd:element name="NumberOfCoffeesCorrectStrength" type="xsd:integer"/>
-       
+         
     
+  
   <xsd:element name="Strength" type="xsd:integer"/>
-       
+         
     
+  
   <xsd:element name="Quantity" type="xsd:integer"/>
-       
+         
+
 
 </xsd:schema>
 ]]></inlinedXMLSchema>
@@ -60,6 +74,7 @@
             <cast castType="userDefined" path="Variables/any" qualifier="SoftwareVersion" ref="var1" var="any12"/>
             <cast castType="userDefined" path="Variables/any" qualifier="MessageDetail" ref="var1" var="any"/>
             <cast castType="userDefined" path="Variables/any" qualifier="Properties" ref="var1" var="any1"/>
+            <cast castType="userDefined" path="Variables/any" qualifier="Address" ref="var1" var="any3"/>
         </input>
         <output path="$var4/mb:env(Environment)" var="Environment"/>
         <output namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON,Properties)" var="MessageAssembly">
@@ -71,6 +86,7 @@
             <cast castType="userDefined" path="$MessageAssembly/JSON/spath('Data',2)/any" qualifier="Flow" ref="var1" var="any16"/>
             <cast castType="userDefined" path="$MessageAssembly/JSON/spath('Data',2)/any" qualifier="SoftwareVersion" ref="var1" var="any17"/>
             <cast castType="userDefined" path="$MessageAssembly/JSON/spath('Data',2)/any" qualifier="Properties" ref="var1" var="any2"/>
+            <cast castType="userDefined" path="$MessageAssembly/JSON/spath('Data',2)/any" qualifier="Address" ref="var1" var="any18"/>
         </output>
         <passthrough>
             <input path="."/>
@@ -120,6 +136,10 @@
         <move>
             <input path="Variables/Properties"/>
             <output path="$MessageAssembly/JSON/spath('Data',2)/Properties"/>
+        </move>
+        <move>
+            <input path="Variables/Address"/>
+            <output path="$MessageAssembly/JSON/spath('Data',2)/Address"/>
         </move>
     </mappingDeclaration>
 </mappingRoot>

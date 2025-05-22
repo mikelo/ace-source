@@ -11,7 +11,7 @@
       <nodes xmi:type="ComIbmMSLMapping.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_4" location="460,34" mappingExpression="msl://{default}#ACME_CoffeeRoasters_Flow_Mapping">
         <translation xmi:type="utility:ConstantString" string="Mapping"/>
       </nodes>
-      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="220,20" computeExpression="esql://routine/#ACME_CoffeeRoasters_Flow_GatherData.Main">
+      <nodes xmi:type="ComIbmCompute.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_5" location="220,20" computeExpression="esql://routine/#ACME_CoffeeRoasters_Flow_GatherData.Main" validateMaster="contentAndValue" validateFailureAction="exceptionList">
         <translation xmi:type="utility:ConstantString" string="GatherData"/>
       </nodes>
       <nodes xmi:type="ComIbmCallableFlowReply.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_3" location="745,39">
@@ -20,16 +20,17 @@
       <nodes xmi:type="ComIbmCallableFlowInput.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_6" location="9,21" callableInputEndpoint="ACME_CoffeeRoasters_Flow">
         <translation xmi:type="utility:ConstantString" string="Callable Input"/>
       </nodes>
-      <nodes xmi:type="ComIbmLog.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="423,164" logLevel="Info" logMessage="{{$mappingInput_InputLocalEnvironment}}">
-        <translation xmi:type="utility:ConstantString" string="Log"/>
+      <nodes xmi:type="ComIbmLog.msgnode:FCMComposite_1" xmi:id="FCMComposite_1_1" location="423,164" logLevel="Info" logMessage="{{$mappingInput_ExceptionList}}">
+        <translation xmi:type="utility:ConstantString" string="Exception"/>
         <mappingInput inputName="InputRoot" inputLocation="$InputRoot" schemaLocation="" schemaRoot=""/>
         <mappingInput inputName="InputLocalEnvironment" inputLocation="$InputLocalEnvironment" schemaLocation="" schemaRoot=""/>
+        <mappingInput inputName="ExceptionList" inputLocation="$ExceptionList" messageDomain="" schemaLocation="" schemaRoot=""/>
       </nodes>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_5" targetNode="FCMComposite_1_4" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_1" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_4" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_2" targetNode="FCMComposite_1_5" sourceNode="FCMComposite_1_6" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
       <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_4" targetNode="FCMComposite_1_3" sourceNode="FCMComposite_1_1" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
-      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.out" targetTerminalName="InTerminal.in"/>
+      <connections xmi:type="eflow:FCMConnection" xmi:id="FCMConnection_6" targetNode="FCMComposite_1_1" sourceNode="FCMComposite_1_5" sourceTerminalName="OutTerminal.failure" targetTerminalName="InTerminal.in"/>
     </composition>
     <propertyOrganizer/>
     <stickyBoard/>

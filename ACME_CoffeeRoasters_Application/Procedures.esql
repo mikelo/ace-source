@@ -86,6 +86,7 @@ DECLARE Initialised SHARED BOOLEAN FALSE;
 		SET Environment.Variables.Datetime = CAST(CURRENT_TIMESTAMP AS CHAR FORMAT datetimepattern);
 		SET Environment.Variables.Hostname = GetHostname();
 		SET Environment.Variables.Properties = GetSystemProperties();
+		SET Environment.Variables.Address = GetAddress();		
 		
 		SET Environment.Variables.Application = ApplicationLabel;
 		SET Environment.Variables.Flow = MessageFlowLabel;
@@ -113,5 +114,11 @@ CREATE FUNCTION GetSystemProperties()
  RETURNS CHAR
  LANGUAGE JAVA
  EXTERNAL NAME "com.ibm.dev.MyClass.systemProperties";
+ 
+CREATE FUNCTION GetAddress()
+ RETURNS CHAR
+ LANGUAGE JAVA 
+ 
+ EXTERNAL NAME "com.ibm.dev.MyClass.myAddressMethod";
   	
 

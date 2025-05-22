@@ -1,8 +1,10 @@
 # BRANCH=$(git rev-parse --abbrev-ref HEAD)
-ARG BRANCH=main
+ARG BRANCH=activitylog
 FROM docker.io/alpine/git as git
 WORKDIR /tmp
-RUN git clone -b $BRANCH --single-branch https://github.com/mikelo/ace-source
+RUN git clone -b activitylog --single-branch https://github.com/mikelo/ace-source
+# RUN git clone https://github.com/mikelo/ace-source
+
 FROM cp.icr.io/cp/appc/ace:13.0.2.0-r1 AS ace
 # USER aceuser
 ENV LICENSE=accept
@@ -18,6 +20,8 @@ ENV MQSI_JARPATH=$MQSI_JARPATH:/tmp/ACME_CoffeeRoasters_Java
 RUN . /opt/ibm/ace-13/server/bin/mqsiprofile && ibmint package --input-path . --output-bar-file coffee.bar --project ACME_CoffeeRoasters_Application --project ACME_CoffeeRoasters_Java --project ACME_CoffeeRoasters_UnitTest --project ACME_CoffeeRoasters_ComponentTest && mqsicreateworkdir /tmp/work-dir && ibmint deploy --input-bar-file coffee.bar --output-work-directory /tmp/work-dir
 
 ADD entrypoint.sh .
+ADD server.conf.yaml /tmp/work-dir
 EXPOSE 7600
 EXPOSE 7800
+EXPOSE 9997
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]
