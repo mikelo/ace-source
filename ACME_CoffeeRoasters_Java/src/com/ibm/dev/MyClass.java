@@ -28,13 +28,13 @@ public static String myAddressMethod() {
 		
 		address = InetAddress.getByName("this.will.never.resolve.invalid");
 		if (address.getHostAddress().matches("127.0.0.1"))
-			throw new RuntimeException (MyClass.class.getName(), new UnknownHostException());
+			throw new RuntimeException ("127.0.0.1 found!", new RuntimeException());
 //		throw new MbJavaException(new Throwable("test"));
 //		throw new UnknownHostException();
 		
 	} catch (UnknownHostException e) {
 		System.err.println("Exception caught: " + e.getMessage());
-		throw new RuntimeException (MyClass.class.getName(), new Throwable("test"));
+		throw new RuntimeException ("ERROR FROM JAVA CLASS " + e.getMessage(), new UnknownHostException());
 
 		 // Wrap and throw as MbUserException
 //		 throw new Exception (MyClass.class.getName(), e);
