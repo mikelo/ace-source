@@ -16,6 +16,7 @@ ENV MQSI_JARPATH=$MQSI_JARPATH:/tmp/ACME_CoffeeRoasters_Java
 RUN . /opt/ibm/ace-13/server/bin/mqsiprofile && ibmint package --input-path . --output-bar-file coffee.bar --project ACME_CoffeeRoasters_Application --project ACME_CoffeeRoasters_Java --project ACME_CoffeeRoasters_UnitTest --project ACME_CoffeeRoasters_ComponentTest && mqsicreateworkdir /tmp/work-dir && ibmint deploy --input-bar-file coffee.bar --output-work-directory /tmp/work-dir
 
 ADD entrypoint.sh .
+ADD server.conf.yaml /tmp/work-dir
 EXPOSE 7600
 EXPOSE 7800
 ENTRYPOINT [ "/tmp/entrypoint.sh" ]
